@@ -1,7 +1,9 @@
+import Login from "./pages/login/login"
+import './main.css'
 function App() {
   return (
     <>
-      <h1>ssddf</h1>
+    <Login/>
     </>
   )
 }
