@@ -22,11 +22,22 @@ const Login = () => {
       username: username,
       password: password,
     };
-    axios
-      .post(`https://www.melivecode.com/api/login`, jsondata)
-      .then((res) => console.log(res));
+    axios.post(`https://www.melivecode.com/api/login`, jsondata).then((res) => {
+      // console.log("object :>> ", res.data.accessToken);
 
-    // console.log("aaa", JSON.stringify(jsondata));
+      if (res.status === 200) {
+        localStorage.setItem("token", res.data.accessToken);
+        // console.log("tototototo", localStorage.getItem("token"));
+        Swal.fire("Good job!", "You clicked the button!", "success");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      }
+    });
   };
 
   return (
@@ -57,29 +68,8 @@ const Login = () => {
               type="submit"
               style={{ background: " #df98fa", color: "white", border: "none" }}
             ></InputCustom>
-            <ButtonResgis>kkk</ButtonResgis>
+            {/* <ButtonResgis>kkk</ButtonResgis> */}
           </form>
-
-          {/* <label>
-              Enter your name:
-              <input
-                type="text"
-                id="username"
-                name="username"
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </label>
-            <label>
-              Enter your age:
-              <input
-                type="text"
-                id="password"
-                name="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-            <input type="submit" />
-          </form> */}
         </div>
       </Container>
     </Body>
