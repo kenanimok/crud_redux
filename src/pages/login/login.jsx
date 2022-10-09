@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import {
   Body,
@@ -15,6 +16,8 @@ const Login = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -29,6 +32,7 @@ const Login = () => {
         localStorage.setItem("token", res.data.accessToken);
         // console.log("tototototo", localStorage.getItem("token"));
         Swal.fire("Good job!", "You clicked the button!", "success");
+        navigate("/listform");
       } else {
         Swal.fire({
           icon: "error",
