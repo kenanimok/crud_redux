@@ -11,12 +11,15 @@ import {
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import * as loginActions from "../../action/login.action";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,23 +28,25 @@ const Login = () => {
       username: username,
       password: password,
     };
-    axios.post(`https://www.melivecode.com/api/login`, jsondata).then((res) => {
-      // console.log("object :>> ", res.data.accessToken);
 
-      if (res.status === 200) {
-        localStorage.setItem("token", res.data.accessToken);
-        // console.log("tototototo", localStorage.getItem("token"));
-        Swal.fire("Good job!", "You clicked the button!", "success");
-        navigate("/listform");
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-          footer: '<a href="">Why do I have this issue?</a>',
-        });
-      }
-    });
+    dispatch(loginActions.loign(jsondata, navigate));
+
+    // axios.post(`https://www.melivecode.com/api/login`, jsondata).then((res) => {
+
+    //   if (res.status === 200) {
+    //     localStorage.setItem("token", res.data.accessToken);
+    //     // console.log("tototototo", localStorage.getItem("token"));
+    //     Swal.fire("Good job!", "You clicked the button!", "success");
+    //     navigate("/listform");
+    //   } else {
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Oops...",
+    //       text: "Something went wrong!",
+    //       footer: '<a href="">Why do I have this issue?</a>',
+    //     });
+    //   }
+    // });
   };
 
   return (

@@ -6,11 +6,14 @@ import thunk from "redux-thunk";
 import { Provider, useDispatch } from "react-redux";
 // import { Provider, useDispatch } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
+import logger from "redux-logger";
+import { rootReducer } from "./reducer";
 
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
-let middlewares = [thunk];
+// let middlewares = [thunk];
+// middlewares.push(logger);
 
-export const store = createStore(applyMiddleware(...middlewares));
+export const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -1,4 +1,10 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
+
+const LOGIN_FETCHING = "LOGIN_FETCHING";
+const LOGIN_FAILED = "LOGIN_FAILED";
+const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+const LOGOUT = "LOGOUT";
 
 export const setLoginFetchingToState = () => ({
   type: LOGIN_FETCHING,
@@ -17,11 +23,16 @@ export const setLogoutToState = () => ({
   type: LOGOUT,
 });
 
-export const loign = () => {
-  return async (dispatch) => {
-    try {
-      dispatch(setLoginFetchingToState());
-      const result = await axios.post("/");
-    } catch {}
+export const loign = (user, navigate) => {
+  // console.log("use", user);
+
+  return (dispatch) => {
+    axios.post("https://www.melivecode.com/api/login", user).then((res) => {
+      console.log("rerserse", res.data);
+      dispatch(setLoginSuccessToState(res.data));
+      if (res.data.status === "ok") {
+        navigate("/xxx");
+      }
+    });
   };
 };
