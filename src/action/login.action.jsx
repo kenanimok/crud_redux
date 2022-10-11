@@ -32,7 +32,23 @@ export const loign = (user, navigate) => {
       dispatch(setLoginSuccessToState(res.data));
       if (res.data.status === "ok") {
         navigate("/xxx");
+        localStorage.setItem("token", res.data.acceessToken);
       }
     });
+  };
+};
+
+export const restore = () => {
+  return (dispatch) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(
+        setLoginSuccessToState({
+          result: "ok",
+          token,
+          message: "Login successfully",
+        })
+      );
+    }
   };
 };

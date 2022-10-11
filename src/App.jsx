@@ -8,22 +8,25 @@ import Header_bar from "./components/layout/header/header";
 import Corelayout from "./components/layout/corelayout/corelayout";
 import { useSelector } from "react-redux";
 import Xxx from "./pages/xxx";
+import PublicRoutes from "./router/public.routes";
+import ProtectedRoutes from "./router/protected.routes";
+import { useDispatch } from "react-redux";
+import * as loginActions from "./action/login.action";
 
 function App() {
-  // const loginReducer = useSelector((state) => state.loginReducer);
-  // useEffect(() => {}, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loginActions.restore);
+  }, []);
   return (
-    // <Corelayout>
-    //   <Routes>
-    //     <Route exact path="listform" element={<List_human />} />
-    //     <Route exact path="xxx" element={<Xxx />} />
-    //     <Route exact path="/" element={<Login />} />
-    //   </Routes>
-    // </Corelayout>
     <Routes>
-      <Route exact path="listform" element={<List_human />} />
-      <Route exact path="xxx" element={<Xxx />} />
-      <Route exact path="/" element={<Login />} />
+      <Route path="/" element={<PublicRoutes />}>
+        <Route exact path="/" element={<Login />} />
+      </Route>
+
+      <Route path="/" element={<ProtectedRoutes />}>
+        <Route exact path="xxx" element={<Xxx />} />
+      </Route>
     </Routes>
   );
 }

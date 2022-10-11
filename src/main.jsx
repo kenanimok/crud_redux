@@ -8,7 +8,6 @@ import { Provider, useDispatch } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import { rootReducer } from "./reducer";
-
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 // let middlewares = [thunk];
 // middlewares.push(logger);
