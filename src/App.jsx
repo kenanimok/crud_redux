@@ -11,7 +11,7 @@ class App extends Component {
   };
 
   addUser = () => {
-    console.log("addUser", this.state.username);
+    // console.log("addUser", this.state.username);
     this.props.addUser(this.state.username);
   };
 
