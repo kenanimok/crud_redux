@@ -5,22 +5,17 @@ const initialState = {
 };
 
 export default (state = initialState, { type, payload }) => {
-  // console.log("ttttype", type);
-  // console.log("pay", payload);
-  const LOGIN_FETCHING = "LOGIN_FETCHING";
-  const LOGIN_FAILED = "LOGIN_FAILED";
-  const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-  const LOGOUT = "LOGOUT";
+  const LIST_FETCHING = "LIST_FETCHING";
+  const LIST_SUCCESS = "LIST_SUCCESS";
+  const LIST_FAIL = "LIST_FAIL";
 
   switch (type) {
-    case LOGIN_FETCHING:
+    case LIST_FETCHING:
       return { ...state, isFetching: true, isError: false, result: null };
-    case LOGIN_SUCCESS:
+    case LIST_SUCCESS:
       return { ...state, isFetching: false, isError: false, result: payload };
-    case LOGIN_FAILED:
+    case LIST_FAIL:
       return { ...state, isFetching: false, isError: true, result: null };
-    case LOGOUT:
-      return initialState;
     default:
       return state;
   }

@@ -28,10 +28,10 @@ export const loign = (user, navigate) => {
 
   return (dispatch) => {
     axios.post("https://www.melivecode.com/api/login", user).then((res) => {
-      console.log("rerserse", res.data);
+      // console.log("rerserse", res.data);
       dispatch(setLoginSuccessToState(res.data));
       if (res.data.status === "ok") {
-        navigate("/xxx");
+        navigate("/");
         localStorage.setItem("token", res.data.acceessToken);
       }
     });
