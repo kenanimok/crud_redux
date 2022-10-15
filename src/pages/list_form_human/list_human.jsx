@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import Corelayout from "../../components/layout/corelayout/corelayout";
 import styled from "styled-components";
-import { Space, Table, Tag } from "antd";
+import { Space, Table, Tag, Dropdown, Menu } from "antd";
 import * as listAction from "../../action/listhuman.action";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+// import { Dropdown, Menu, Space } from "antd";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
@@ -13,29 +15,6 @@ export default function List_human() {
   useEffect(() => {
     dispatch(listAction.getDataList());
   }, []);
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"],
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["loser"],
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
-  ];
 
   const columns = [
     {
@@ -64,6 +43,45 @@ export default function List_human() {
       title: "username",
       dataIndex: "username",
       key: "username",
+    },
+    {
+      title: "action",
+      key: "action",
+      render: (_, record) => (
+        <Dropdown
+          overlay={() => (
+            <Menu
+              items={[
+                {
+                  key: "1",
+                  label: <Link to="/edithuman">edit</Link>,
+                },
+                {
+                  key: "2",
+                  label: (
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://www.aliyun.com"
+                    >
+                      2nd menu item (disabled)
+                    </a>
+                  ),
+                },
+              ]}
+            />
+          )}
+        >
+          <a onClick={(e) => e.preventDefault()}>
+            Hover me
+            {/* <DownOutlined /> */}
+            {/* <Space>
+              Hover me
+              <DownOutlined />
+            </Space> */}
+          </a>
+        </Dropdown>
+      ),
     },
 
     // {
