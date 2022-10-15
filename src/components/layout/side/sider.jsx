@@ -20,7 +20,11 @@ function getItem(key, label, icon) {
 }
 
 const items = [
-  getItem("xxx", <Link to="/xxx">Dashboard</Link>, <PieChartOutlined />),
+  getItem(
+    "listhuman",
+    <Link to="/listhuman">listhuman</Link>,
+    <PieChartOutlined />
+  ),
   getItem("Option 2", "2", <DesktopOutlined />),
 ];
 

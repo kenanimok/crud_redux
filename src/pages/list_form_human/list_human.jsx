@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Corelayout from "../../components/layout/corelayout/corelayout";
 import styled from "styled-components";
-import { Space, Table, Tag, Dropdown, Menu } from "antd";
+import { Space, Table, Tag, Dropdown, Menu, Button } from "antd";
 import * as listAction from "../../action/listhuman.action";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -83,42 +83,14 @@ export default function List_human() {
         </Dropdown>
       ),
     },
-
-    // {
-    //   title: "Tags",
-    //   key: "tags",
-    //   dataIndex: "tags",
-    //   render: (_, { tags }) => (
-    //     <>
-    //       {tags.map((tag) => {
-    //         let color = tag.length > 5 ? "geekblue" : "green";
-    //         if (tag === "loser") {
-    //           color = "volcano";
-    //         }
-    //         return (
-    //           <Tag color={color} key={tag}>
-    //             {tag.toUpperCase()}
-    //           </Tag>
-    //         );
-    //       })}
-    //     </>
-    //   ),
-    // },
-    // {
-    //   title: "Action",
-    //   key: "action",
-    //   render: (_, record) => (
-    //     <Space size="middle">
-    //       <a>Invite {record.name}</a>
-    //       <a>Delete</a>
-    //     </Space>
-    //   ),
-    // },
   ];
   return (
     <Corelayout>
       <Container>
         <TblStyle>
+          <Button>
+            <Link to="/create">add human</Link>
+          </Button>
           <Table columns={columns} dataSource={humanlistReducer.result} />
         </TblStyle>
       </Container>
@@ -134,4 +106,5 @@ const Container = styled.div`
 
 const TblStyle = styled.div`
   padding: 20px;
+  margin: 20px;
 `;
