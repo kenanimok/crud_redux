@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
-  console.log("rererererducerdata", humanlistReducer);
+  // console.log("rererererducerdata", humanlistReducer);
 
   const dispatch = useDispatch();
   useEffect(() => {
