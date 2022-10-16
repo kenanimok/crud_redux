@@ -1,18 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import { useRef } from "react";
 import Corelayout from "../../components/layout/corelayout/corelayout";
 import { useFormik } from "formik";
-import Previewimage from "./previewimage";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import * as CHumanaction from "../../action/createhuman.action";
 const CreateHuman = () => {
   const [selectedImage, setSelectedImage] = useState();
-  console.log("selectedImage", typeof selectedImage);
   const dispatch = useDispatch();
 
-  const fileRef = useRef(null);
   const formik = useFormik({
     initialValues: {
       fname: "",

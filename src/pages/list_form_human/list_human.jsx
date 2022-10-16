@@ -4,12 +4,14 @@ import styled from "styled-components";
 import { Space, Table, Tag, Dropdown, Menu, Button } from "antd";
 import * as listAction from "../../action/listhuman.action";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 // import { Dropdown, Menu, Space } from "antd";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
   // console.log("rererererducerdata", humanlistReducer);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -54,36 +56,56 @@ export default function List_human() {
               items={[
                 {
                   key: "1",
-                  label: <Link to="/edithuman">edit</Link>,
+                  label: (
+                    <p
+                      onClick={() => {
+                        navigate("/edit/" + record.id);
+                      }}
+                    >
+                      edit
+                    </p>
+                  ),
                 },
                 {
                   key: "2",
-                  label: (
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://www.aliyun.com"
-                    >
-                      2nd menu item (disabled)
-                    </a>
-                  ),
+                  label: <p onClick={() => deleteHuman(record)}>deletee</p>,
                 },
               ]}
             />
           )}
         >
-          <a onClick={(e) => e.preventDefault()}>
-            Hover me
-            {/* <DownOutlined /> */}
-            {/* <Space>
-              Hover me
-              <DownOutlined />
-            </Space> */}
-          </a>
+          <a onClick={(e) => e.preventDefault()}>Hover me</a>
         </Dropdown>
       ),
     },
   ];
+
+  const deleteHuman = async (record) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      id: record.id,
+    });
+
+    var requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("https://www.mecallapi.com/api/users/delete", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        alert(result["message"]);
+        if (result["status"] === "ok") {
+          alert("yeyey");
+        }
+      })
+      .catch((error) => console.log("error", error));
+  };
+
   return (
     <Corelayout>
       <Container>

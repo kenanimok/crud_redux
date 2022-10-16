@@ -28,3 +28,11 @@ export const getDataList = () => {
     }
   };
 };
+
+// export const deleteData = (data) => {
+//   console.log("delte_para", data);
+//   return async (dispatch) => {
+//     await axios.delete("https://www.melivecode.com/api/users/delete", data);
+//     // await getDataList(dispatch);
+//   };
+// };
