@@ -50,7 +50,7 @@ const Login = () => {
             <Label>email</Label>
 
             <InputCustom
-              type="password"
+              type="text"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
             ></InputCustom>

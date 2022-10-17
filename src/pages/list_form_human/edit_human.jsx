@@ -37,11 +37,11 @@ const Edit_human = () => {
 
   console.log("formik", formik.initialValues);
 
-  const imageChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
-    }
-  };
+  // const imageChange = (e) => {
+  //   if (e.target.files && e.target.files.length > 0) {
+  //     setSelectedImage(e.target.files[0]);
+  //   }
+  // };
 
   return (
     <Corelayout>

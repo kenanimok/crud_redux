@@ -24,14 +24,14 @@ export const setLogoutToState = () => ({
 });
 
 export const loign = (user, navigate) => {
-  // console.log("use", user);
+  console.log("use", user);
 
   return (dispatch) => {
     axios.post("https://www.melivecode.com/api/login", user).then((res) => {
       // console.log("rerserse", res.data);
       dispatch(setLoginSuccessToState(res.data));
       if (res.data.status === "ok") {
-        navigate("/");
+        navigate("/listhuman");
         localStorage.setItem("token", res.data.acceessToken);
       }
     });
