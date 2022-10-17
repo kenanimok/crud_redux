@@ -17,11 +17,12 @@ export const setStockFailedToState = () => ({
   type: HUMAN_FAIL,
 });
 
-//   export const updateProduct = (formData) => {
-//     return async (dispatch) => {
-//       await httpClient.put(server.PRODUCT_URL, formData);
-//     };
-//   };
+export const updateProduct = (formData) => {
+  console.log("formData____updateAction :>> ", formData);
+  return async (dispatch) => {
+    await axios.put("https://www.melivecode.com/api/users/update", formData);
+  };
+};
 
 export const getProductById = (id) => {
   return async (dispatch) => {
