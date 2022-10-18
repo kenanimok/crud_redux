@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 export const Body = styled.div`
-  background-image: linear-gradient(310deg, #df98fa, #9055ff);
+  /* background-image: linear-gradient(310deg, #df98fa, #9055ff); */
+  background-image: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
   font-family: sans-serif;
   height: 100vh;
 `;
@@ -110,7 +111,7 @@ export const ButtonResgis = styled.button`
   transition: all 200ms;
   box-shadow: var(--box-shadow);
   font-size: 18px;
-  background-image: linear-gradient(310deg, #df98fa, #9055ff);
+  background-image: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
 
   :focus {
     width: 70%;

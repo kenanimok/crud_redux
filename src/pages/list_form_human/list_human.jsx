@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Corelayout from "../../components/layout/corelayout/corelayout";
 import styled from "styled-components";
 import { Space, Table, Tag, Dropdown, Menu, Button } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 import * as listAction from "../../action/listhuman.action";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -74,7 +75,9 @@ export default function List_human() {
             />
           )}
         >
-          <a onClick={(e) => e.preventDefault()}>Hover me</a>
+          <a onClick={(e) => e.preventDefault()}>
+            <DownOutlined />
+          </a>
         </Dropdown>
       ),
     },
@@ -114,9 +117,12 @@ export default function List_human() {
     <Corelayout>
       <Container>
         <TblStyle>
-          <Button>
-            <Link to="/create">add human</Link>
-          </Button>
+          <BtnCustom>
+            <Button>
+              <Link to="/create">add human</Link>
+            </Button>
+          </BtnCustom>
+
           <Table columns={columns} dataSource={humanlistReducer.result} />
         </TblStyle>
       </Container>
@@ -133,4 +139,16 @@ const Container = styled.div`
 const TblStyle = styled.div`
   padding: 20px;
   margin: 20px;
+`;
+const BtnCustom = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+  .ant-btn {
+    color: white;
+    background: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
+    height: 50px;
+    border-radius: 12px;
+    font-weight: 300px;
+  }
 `;

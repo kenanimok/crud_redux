@@ -20,7 +20,6 @@ import CreateHuman from "./pages/list_form_human/create_human";
 import Edit_human from "./pages/list_form_human/edit_human";
 import PublicRoutes from "./router/public.routes";
 import ProtectedRoutes from "./router/protected.routes";
-import Filter_flag from "./pages/flag/fil_flag";
 import Flag_ from "./pages/flag/flag_";
 import Privateroute from "./router/private.route";
 import Allroute from "./router/allroute";

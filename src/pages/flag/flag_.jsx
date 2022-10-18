@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Corelayout from "../../components/layout/corelayout/corelayout";
 import styled from "styled-components";
+import { Select } from "antd";
 
 const Flag_ = () => {
   const [error, setError] = useState(null);
@@ -13,10 +14,17 @@ const Flag_ = () => {
   const [q, setQ] = useState("");
   const [searchParam] = useState(["capital", "name", "numericCode"]);
   const [filterParam, setFilterParam] = useState(["All"]);
+  console.log("filter_param", filterParam);
 
   useEffect(() => {
     getdata();
   }, []);
+
+  const { Option } = Select;
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+    setFilterParam(value);
+  };
 
   const getdata = async () => {
     try {
@@ -51,37 +59,19 @@ const Flag_ = () => {
   return (
     <Corelayout>
       <Container>
-        {/* <Boxcard>
-          {data.map((item, index) => (
-            <Titlecard key={index} color={"white"}>
-              <div className="boxcol">
-                <img src={item.flag.large} alt={item.name} width="100%" />
-                <h2 style={{ color: "white", padding: "10px" }}>{item.name}</h2>
-                <h2 style={{ color: "white", padding: "10px" }}>
-                  {item.region}
-                </h2>
-              </div>
-            </Titlecard>
-          ))}
-        </Boxcard> */}
-
-        <div className="select">
-          <select
-            onChange={(e) => {
-              setFilterParam(e.target.value);
+        <CustomSelect>
+          <SelectCs
+            defaultValue="All"
+            style={{
+              width: 120,
             }}
-            className="custom-select"
-            aria-label="Filter Countries By Region"
+            onChange={handleChange}
           >
-            <option value="All">Filter By Region</option>
-            <option value="Africa">Africa</option>
-            <option value="Americas">America</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="Oceania">Oceania</option>
-          </select>
-          <span className="focus"></span>
-        </div>
+            <Option value="Africa">Africa</Option>
+            <Option value="Americas">Americas</Option>
+            <Option value="Asia">Asia</Option>
+          </SelectCs>
+        </CustomSelect>
 
         <Boxcard>
           {search(data).map((item, index) => (
@@ -97,38 +87,13 @@ const Flag_ = () => {
           ))}
         </Boxcard>
       </Container>
-      {/* <ul>
-        {data.map((item) => (
-          <li>
-            <article className="card" key={item.alpha3Code}>
-              <div className="card-image">
-                <img src={item.flag.large} alt={item.name} />
-              </div>
-              <div className="card-content">
-                <h2 className="card-name">{item.name}</h2>
-                <ol className="card-list">
-                  <li>
-                    population: <span>{item.population}</span>
-                  </li>
-                  <li>
-                    Region: <span>{item.region}</span>
-                  </li>
-                  <li>
-                    Capital: <span>{item.capital}</span>
-                  </li>
-                </ol>
-              </div>
-            </article>
-          </li>
-        ))}
-      </ul> */}
     </Corelayout>
   );
 };
 
 export default Flag_;
 const Boxcard = styled.div`
-  margin-top: 10px;
+  /* margin-top: 10px; */
   background-color: #f0f2f5;
 
   display: grid;
@@ -160,7 +125,9 @@ export const Container = styled.div`
 export const Titlecard = styled.div`
   width: ${(props) => (props.width ? props.width : "100%")};
   height: ${(props) => (props.height ? props.height : "100%")};
-  background: ${(props) => (props.background ? props.background : `#1d1d42`)};
+  /* background: ${(props) =>
+    props.background ? props.background : `#001529`}; */
+  background: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
   box-shadow: ${(props) =>
     props.isPdfReport ? "0px" : "0px 1px 16px #eaeaea"};
   border: ${(props) => (props.isPdfReport ? "1px solid #eaeaea" : "0px")};
@@ -196,3 +163,21 @@ export const Titlecard = styled.div`
     align-items: center;
   }
 `;
+
+const CustomSelect = styled.span`
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+  margin-right: 10px;
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
+    color: white;
+    border-radius: 12px;
+    height: 50px;
+    font-weight: 200;
+  }
+`;
+const SelectCs = styled(Select)``;

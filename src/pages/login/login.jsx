@@ -58,7 +58,7 @@ const Login = () => {
 
             <InputCustom
               type="submit"
-              style={{ background: " #df98fa", color: "white", border: "none" }}
+              style={{ background: " #3a50e0", color: "white", border: "none" }}
             ></InputCustom>
             {/* <ButtonResgis>kkk</ButtonResgis> */}
           </form>
