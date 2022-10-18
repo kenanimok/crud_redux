@@ -20,6 +20,8 @@ import CreateHuman from "./pages/list_form_human/create_human";
 import Edit_human from "./pages/list_form_human/edit_human";
 import PublicRoutes from "./router/public.routes";
 import ProtectedRoutes from "./router/protected.routes";
+import Filter_flag from "./pages/flag/fil_flag";
+import Flag_ from "./pages/flag/flag_";
 function App() {
   // const dispatch = useDispatch();
   // const loginReducer = useSelector((state) => state.loginReducer);
@@ -37,6 +39,7 @@ function App() {
         <Route path="/listhuman" element={<List_human />} />
         <Route path="/create" element={<CreateHuman />} />
         <Route path="/edit/:id" element={<Edit_human />} />
+        <Route path="/flag" element={<Flag_ />} />
       </Route>
     </Routes>
   );

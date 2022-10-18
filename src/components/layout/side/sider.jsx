@@ -9,6 +9,7 @@ import { Breadcrumb, Layout, Menu } from "antd";
 import React, { useState } from "react";
 import Header_bar from "../header/header";
 import { Link } from "react-router-dom";
+
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(key, label, icon) {
@@ -25,7 +26,7 @@ const items = [
     <Link to="/listhuman">listhuman</Link>,
     <PieChartOutlined />
   ),
-  getItem("Option 2", "2", <DesktopOutlined />),
+  getItem("flag", <Link to="/flag">Flag</Link>, <PieChartOutlined />),
 ];
 
 const Sider_bar = (props) => {

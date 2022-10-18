@@ -95,15 +95,19 @@ export default function List_human() {
       redirect: "follow",
     };
 
-    fetch("https://www.mecallapi.com/api/users/delete", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        alert(result["message"]);
-        if (result["status"] === "ok") {
-          alert("yeyey");
-        }
-      })
-      .catch((error) => console.log("error", error));
+    const Fetch = async () => {
+      await fetch("https://www.mecallapi.com/api/users/delete", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          alert(result["message"]);
+          if (result["status"] === "ok") {
+            alert("yeyey");
+          }
+        })
+        .catch((error) => console.log("error", error));
+    };
+
+    Fetch();
   };
 
   return (
