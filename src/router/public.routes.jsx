@@ -2,9 +2,10 @@ import React from "react";
 import { store } from "../main";
 import { Navigate, Outlet } from "react-router-dom";
 
-const PublicRoutes = (props: any) => {
+const PublicRoutes = () => {
   const auth = store.getState().loginReducer.result;
-  return auth ? <Navigate to="/stock" /> : <Outlet />;
+  console.log("auth_public", auth);
+  return auth ? <Navigate to="/listhuman" /> : <Outlet />;
 };
 
 export default PublicRoutes;

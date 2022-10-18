@@ -22,12 +22,14 @@ import PublicRoutes from "./router/public.routes";
 import ProtectedRoutes from "./router/protected.routes";
 import Filter_flag from "./pages/flag/fil_flag";
 import Flag_ from "./pages/flag/flag_";
+import Privateroute from "./router/private.route";
+import Allroute from "./router/allroute";
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const loginReducer = useSelector((state) => state.loginReducer);
-  // useEffect(() => {
-  //   dispatch(loginActions.restore);
-  // }, []);
+  useEffect(() => {
+    dispatch(loginActions.restoreLogin);
+  }, []);
   return (
     <Routes>
       <Route path="/" element={<PublicRoutes />}>

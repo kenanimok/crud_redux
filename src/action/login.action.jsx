@@ -28,19 +28,21 @@ export const loign = (user, navigate) => {
 
   return (dispatch) => {
     axios.post("https://www.melivecode.com/api/login", user).then((res) => {
-      // console.log("rerserse", res.data);
+      // console.log("rerserse", res.data.accessToken);
       dispatch(setLoginSuccessToState(res.data));
       if (res.data.status === "ok") {
+        localStorage.setItem("token", res.data.accessToken);
+
         navigate("/listhuman");
-        localStorage.setItem("token", res.data.acceessToken);
       }
     });
   };
 };
 
-export const restore = () => {
+export const restoreLogin = () => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
+    console.log("tttt", token);
     if (token) {
       dispatch(
         setLoginSuccessToState({
@@ -50,5 +52,14 @@ export const restore = () => {
         })
       );
     }
+  };
+};
+
+export const logout = (navigate) => {
+  return (dispatch) => {
+    localStorage.removeItem("token");
+    dispatch(setLogoutToState());
+    alert("Logout successfully");
+    navigate("/login");
   };
 };

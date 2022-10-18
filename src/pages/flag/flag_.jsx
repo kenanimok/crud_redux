@@ -130,14 +130,26 @@ export default Flag_;
 const Boxcard = styled.div`
   margin-top: 10px;
   background-color: #f0f2f5;
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  /* grid-template-columns: repeat(7, 1fr); */
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 7fr)); */
+  grid-template-columns: repeat(7, 1fr);
   width: 100%;
   height: 100%;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   justify-content: center;
+
+  @media only screen and (max-width: 1500px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const Container = styled.div`
