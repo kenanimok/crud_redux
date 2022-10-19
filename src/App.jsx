@@ -24,6 +24,7 @@ import Flag_ from "./pages/flag/flag_";
 import Privateroute from "./router/private.route";
 import Allroute from "./router/allroute";
 import Side_nav from "./pages/side_nav/side_nav";
+import Register from "./pages/Register/Register";
 function App() {
   const dispatch = useDispatch();
   // const loginReducer = useSelector((state) => state.loginReducer);
@@ -54,6 +55,7 @@ function App() {
         <Route path="/edit/:id" element={<Edit_human />} />
         <Route path="/flag" element={<Flag_ />} />
         <Route path="/nav" element={<Side_nav />} />
+        <Route path="/register" element={<Register />} />
       </Route>
     </Routes>
   );

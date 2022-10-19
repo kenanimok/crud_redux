@@ -1,6 +1,5 @@
 // import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import {
   Body,
   ButtonResgis,
@@ -13,6 +12,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import * as loginActions from "../../action/login.action";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Login = () => {
   const [username, setUserName] = useState();
@@ -60,7 +61,12 @@ const Login = () => {
               type="submit"
               style={{ background: " #3a50e0", color: "white", border: "none" }}
             ></InputCustom>
-            {/* <ButtonResgis>kkk</ButtonResgis> */}
+            <RegisterL
+              style={{ background: " #3a50e0", color: "white", border: "none" }}
+              to="/register"
+            >
+              Register
+            </RegisterL>
           </form>
         </div>
       </Container>
@@ -69,3 +75,23 @@ const Login = () => {
 };
 
 export default Login;
+const RegisterL = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 60%;
+  height: 50px;
+  border: solid #999 1px;
+  border-radius: 5px;
+  text-indent: 15px;
+  transition: all 200ms;
+  box-shadow: var(--box-shadow);
+  font-size: 18px;
+  background-color: " #3a50e0";
+  color: "white";
+
+  :focus {
+    width: 70%;
+  }
+`;
