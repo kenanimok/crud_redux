@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import Login from "./pages/login/login";
 import "./main.css";
 import {
@@ -25,40 +26,47 @@ import Privateroute from "./router/private.route";
 import Allroute from "./router/allroute";
 import Side_nav from "./pages/side_nav/side_nav";
 import Register from "./pages/Register/Register";
+
+import { ThemeProvider } from "styled-components";
+
 function App() {
+  const navigate = useNavigate();
+  const Loginuser = useSelector((state) => state.loginActions);
+
+  console.log("Loginuser :>> ", Loginuser);
+
   const dispatch = useDispatch();
-  // const loginReducer = useSelector((state) => state.loginReducer);
   useEffect(() => {
-    dispatch(loginActions.restoreLogin);
+    dispatch(loginActions.restoreLogin(navigate));
   }, []);
+
   return (
-    // <Routes>
-    //   <Route path="/" element={<PublicRoutes />}>
-    //     <Route path="/login" element={<Login />} />
-    //     <Route path="/" element={<Navigate to="/login" />} />
-    //   </Route>
-
-    //   <Route path="/" element={<ProtectedRoutes />}>
-    //     <Route path="/listhuman" element={<List_human />} />
-    //     <Route path="/create" element={<CreateHuman />} />
-    //     <Route path="/edit/:id" element={<Edit_human />} />
-    //     <Route path="/flag" element={<Flag_ />} />
-    //   </Route>
-    // </Routes>
-
     <Routes>
-      <Route path="/" element={<PublicRoutes />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/listhuman" element={<List_human />} />
-        <Route path="/create" element={<CreateHuman />} />
-        <Route path="/edit/:id" element={<Edit_human />} />
-        <Route path="/flag" element={<Flag_ />} />
-        <Route path="/nav" element={<Side_nav />} />
-        <Route path="/register" element={<Register />} />
-      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/listhuman" element={<List_human />} />
+      <Route path="/create" element={<CreateHuman />} />
+      <Route path="/edit/:id" element={<Edit_human />} />
+      <Route path="/flag" element={<Flag_ />} />
+      <Route path="/nav" element={<Side_nav />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 }
 
 export default App;
+
+//private route
+// <Routes>
+//   <Route path="/" element={<PublicRoutes />}>
+//     <Route path="/login" element={<Login />} />
+//     <Route path="/" element={<Navigate to="/login" />} />
+//   </Route>
+
+//   <Route path="/" element={<ProtectedRoutes />}>
+//     <Route path="/listhuman" element={<List_human />} />
+//     <Route path="/create" element={<CreateHuman />} />
+//     <Route path="/edit/:id" element={<Edit_human />} />
+//     <Route path="/flag" element={<Flag_ />} />
+//   </Route>
+// </Routes>

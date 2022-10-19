@@ -39,7 +39,7 @@ export const loign = (user, navigate) => {
   };
 };
 
-export const restoreLogin = () => {
+export const restoreLogin = (navigate) => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
     console.log("tttt", token);
@@ -51,6 +51,8 @@ export const restoreLogin = () => {
           message: "Login successfully",
         })
       );
+    } else {
+      navigate("/");
     }
   };
 };

@@ -18,7 +18,7 @@ export default function List_human() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listAction.getDataList());
-  }, [humanlistReducer]);
+  }, []);
 
   const columns = [
     {
