@@ -30,23 +30,19 @@ const Edit_human = () => {
       ? HumanEditReducer.result.user
       : initialValues,
     onSubmit: (values) => {
-      console.log("values", values);
+      // console.log("values", values);
       dispatch(HumanEditActions.updateProduct(values));
     },
   });
 
-  console.log("formik", formik.initialValues);
-
-  // const imageChange = (e) => {
-  //   if (e.target.files && e.target.files.length > 0) {
-  //     setSelectedImage(e.target.files[0]);
-  //   }
-  // };
+  // console.log("formik", formik.initialValues);
 
   return (
     <Corelayout>
       <Container>
         <LayoutForm>
+          {/* <img src={HumanEditReducer.result.avatar} alt="xx" /> */}
+          {/* <p style={{ color: "red" }}>{HumanEditReducer.result.status}</p> */}
           <Formcon onSubmit={formik.handleSubmit}>
             <Continput>
               <LabelCustom htmlFor="fname">Link Avartar</LabelCustom>

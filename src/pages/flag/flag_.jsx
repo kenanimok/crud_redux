@@ -119,7 +119,7 @@ const Boxcard = styled.div`
 
 export const Container = styled.div`
   display: grid;
-  gap: ${(props) => (props.gap ? `${props.gap}` : "20px")};
+  /* gap: ${(props) => (props.gap ? `${props.gap}` : "20px")}; */
 `;
 
 export const Titlecard = styled.div`

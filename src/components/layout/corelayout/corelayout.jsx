@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import Header_bar from "../header/header";
 import Sider_bar from "../side/sider";
 import { Link } from "react-router-dom";
+import Side_nav from "../../../pages/side_nav/side_nav";
 const { Header, Content, Footer, Sider } = Layout;
 
 const Corelayout = (props) => {
@@ -19,6 +20,7 @@ const Corelayout = (props) => {
         minHeight: "100vh",
       }}
     >
+      {/* <Side_nav /> */}
       <Sider_bar />
 
       <Layout className="site-layout">

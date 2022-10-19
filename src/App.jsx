@@ -23,6 +23,7 @@ import ProtectedRoutes from "./router/protected.routes";
 import Flag_ from "./pages/flag/flag_";
 import Privateroute from "./router/private.route";
 import Allroute from "./router/allroute";
+import Side_nav from "./pages/side_nav/side_nav";
 function App() {
   const dispatch = useDispatch();
   // const loginReducer = useSelector((state) => state.loginReducer);
@@ -30,17 +31,29 @@ function App() {
     dispatch(loginActions.restoreLogin);
   }, []);
   return (
+    // <Routes>
+    //   <Route path="/" element={<PublicRoutes />}>
+    //     <Route path="/login" element={<Login />} />
+    //     <Route path="/" element={<Navigate to="/login" />} />
+    //   </Route>
+
+    //   <Route path="/" element={<ProtectedRoutes />}>
+    //     <Route path="/listhuman" element={<List_human />} />
+    //     <Route path="/create" element={<CreateHuman />} />
+    //     <Route path="/edit/:id" element={<Edit_human />} />
+    //     <Route path="/flag" element={<Flag_ />} />
+    //   </Route>
+    // </Routes>
+
     <Routes>
       <Route path="/" element={<PublicRoutes />}>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Navigate to="/login" />} />
-      </Route>
-
-      <Route path="/" element={<ProtectedRoutes />}>
         <Route path="/listhuman" element={<List_human />} />
         <Route path="/create" element={<CreateHuman />} />
         <Route path="/edit/:id" element={<Edit_human />} />
         <Route path="/flag" element={<Flag_ />} />
+        <Route path="/nav" element={<Side_nav />} />
       </Route>
     </Routes>
   );
