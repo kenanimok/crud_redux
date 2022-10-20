@@ -26,16 +26,18 @@ import Privateroute from "./router/private.route";
 import Allroute from "./router/allroute";
 import Side_nav from "./pages/side_nav/side_nav";
 import Register from "./pages/Register/Register";
-
 import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./components/styles/theme";
+
+export const ThemeContext = React.createContext(null);
 
 function App() {
+  const [theme, setTheme] = useState("light");
+  const themeStyle = theme === "light" ? lightTheme : darkTheme;
+
   const navigate = useNavigate();
-  const Loginuser = useSelector((state) => state.loginActions);
-
-  console.log("Loginuser :>> ", Loginuser);
-
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(loginActions.restoreLogin(navigate));
   }, []);

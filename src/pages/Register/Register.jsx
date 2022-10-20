@@ -14,7 +14,8 @@ const Register = () => {
         <Smile></Smile>
         <CardGradient></CardGradient>
       </div>
-      <div className="right">
+
+      <div className="right ">
         <FContainer>
           <form>
             <Containform>
@@ -37,17 +38,6 @@ const Register = () => {
                 <Inputcs type={"text"} />
                 <Inputcs type={"text"} width={"70"} />
               </RowForm>
-
-              {/* <RowForm>
-                <LabelsDate>EXP. DATE</LabelsDate>
-                <Inputcs type={"text"} />
-                <LabelsDate>(MM/YY)</LabelsDate>
-
-                <Inputcs type={"text"} />
-                <LabelsDate>EXP. DATE</LabelsDate>
-
-                <Inputcs type={"text"} width={"70"} />
-              </RowForm> */}
             </Containform>
             <Stlbutton>
               <Buttoncs className="buttton">submit</Buttoncs>
@@ -100,13 +90,19 @@ const Container = styled.div`
 
   .right {
     background-color: #fff;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
   }
 `;
 
+const BorderContaineer = styled.div`
+  border: 2px solid black;
+`;
+
 const FContainer = styled.div`
+  border: 3px solid;
+  border-color: rgb(26, 77, 121);
+  /* border-image: linear-gradient(to right, rgb(0, 4, 40), rgb(26, 77, 121)); */
+  border-radius: 12px;
+  padding: 50px;
   position: relative;
   top: 30%;
   left: 20%;
