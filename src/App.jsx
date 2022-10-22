@@ -1,5 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
+
 import Login from "./pages/login/login";
 import "./main.css";
 import {
@@ -19,40 +20,52 @@ import * as loginActions from "./action/login.action";
 import { rootReducer } from "./reducer";
 import CreateHuman from "./pages/list_form_human/create_human";
 import Edit_human from "./pages/list_form_human/edit_human";
-import PublicRoutes from "./router/public.routes";
-import ProtectedRoutes from "./router/protected.routes";
+
 import Flag_ from "./pages/flag/flag_";
-import Privateroute from "./router/private.route";
-import Allroute from "./router/allroute";
 import Side_nav from "./pages/side_nav/side_nav";
 import Register from "./pages/Register/Register";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./components/styles/theme";
-
-export const ThemeContext = React.createContext(null);
+import { GlobalStyle } from "./components/styles/globalStyle";
+import NewRoute from "./router/newrout";
+import Route_hom from "./router/route_hom";
+import TestRoute from "./testRoute";
+export const ThemeContext = createContext();
 
 function App() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  console.log("checkToken :>> ", token);
+
   const [theme, setTheme] = useState("light");
   const themeStyle = theme === "light" ? lightTheme : darkTheme;
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(loginActions.restoreLogin(navigate));
+    // dispatch(loginActions.restoreLogin(navigate));
+    ken();
   }, []);
 
+  const ken = () => {
+    if (token !== undefined || token !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Navigate to="/login" />} />
-      <Route path="/listhuman" element={<List_human />} />
-      <Route path="/create" element={<CreateHuman />} />
-      <Route path="/edit/:id" element={<Edit_human />} />
-      <Route path="/flag" element={<Flag_ />} />
-      <Route path="/nav" element={<Side_nav />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
+    <>
+      {ken ? (
+        <Routes>
+          <Route path="/xxx" element={<TestRoute />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      )}
+    </>
   );
 }
 

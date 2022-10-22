@@ -57,7 +57,6 @@ const CardGradient = styled.div`
   left: 10%;
   width: 30%;
   height: 33%;
-  /* background: linear-gradient(to right, rgb(252, 70, 107), rgb(63, 94, 251)); */
 
   /* background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%); */
   background: linear-gradient(to right, rgb(26, 41, 128), rgb(38, 208, 206));
@@ -111,8 +110,7 @@ const FContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  /* background-color: red; */
-  /* height: 100%; */
+
   width: 50%;
 
   .buttton {
@@ -139,7 +137,6 @@ const Labelcs = styled.label`
   color: #21092f;
   font-size: 13px;
   letter-spacing: 2px;
-  /* margin-bottom: 50px; */
 `;
 
 const LabelsDate = styled.div`
@@ -148,7 +145,6 @@ const LabelsDate = styled.div`
   font-size: 13px;
   letter-spacing: 2px;
   margin-left: 5px;
-  /* margin-bottom: 50px; */
 `;
 
 const Containform = styled.div`
@@ -220,7 +216,6 @@ const Buttoncs = styled.button`
   width: 90%;
   background-image: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
   height: 50px;
-  /* margin-left: 20px; */
   display: flex;
   align-content: center;
   align-items: center;

@@ -14,7 +14,7 @@ import Side_nav from "../../../pages/side_nav/side_nav";
 const { Header, Content, Footer, Sider } = Layout;
 import { SLayout, SMain } from "./corelayout.stye";
 
-const Corelayout = (props) => {
+const Corelayout = ({ children }) => {
   return (
     <SLayout>
       {/* <Sidebar /> */}

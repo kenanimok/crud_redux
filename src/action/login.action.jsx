@@ -52,7 +52,7 @@ export const restoreLogin = (navigate) => {
         })
       );
     } else {
-      navigate("/");
+      navigate("/login");
     }
   };
 };
