@@ -12,7 +12,6 @@ import Side_nav from "../side_nav/side_nav";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
-  // console.log("rererererducerdata", humanlistReducer);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -115,19 +114,20 @@ export default function List_human() {
   };
 
   return (
-    <Corelayout>
-      <Container>
-        <TblStyle>
-          <BtnCustom>
-            <Button>
-              <Link to="/create">add human</Link>
-            </Button>
-          </BtnCustom>
+    <>
+      <Bodycontainer>
+        <Table columns={columns} dataSource={humanlistReducer.result} />
+      </Bodycontainer>
+    </>
+    // <TblStyle>
+    //   <BtnCustom>
+    //     <Button>
+    //       <Link to="/create">add human</Link>
+    //     </Button>
+    //   </BtnCustom>
 
-          <Table columns={columns} dataSource={humanlistReducer.result} />
-        </TblStyle>
-      </Container>
-    </Corelayout>
+    //   <Table columns={columns} dataSource={humanlistReducer.result} />
+    // </TblStyle>
   );
 }
 
@@ -152,4 +152,8 @@ const BtnCustom = styled.div`
     border-radius: 12px;
     font-weight: 300px;
   }
+`;
+
+const Bodycontainer = styled.div`
+  padding: 30px;
 `;

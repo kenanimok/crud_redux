@@ -27,44 +27,22 @@ import Register from "./pages/Register/Register";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./components/styles/theme";
 import { GlobalStyle } from "./components/styles/globalStyle";
-import NewRoute from "./router/newrout";
-import Route_hom from "./router/route_hom";
-import TestRoute from "./testRoute";
+import New_route from "./router/new_route";
 export const ThemeContext = createContext();
 
 function App() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [token, setToken] = useState(localStorage.getItem("token"));
-  console.log("checkToken :>> ", token);
-
   const [theme, setTheme] = useState("light");
   const themeStyle = theme === "light" ? lightTheme : darkTheme;
-
-  useEffect(() => {
-    // dispatch(loginActions.restoreLogin(navigate));
-    ken();
-  }, []);
-
-  const ken = () => {
-    if (token !== undefined || token !== null) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   return (
     <>
-      {ken ? (
-        <Routes>
-          <Route path="/xxx" element={<TestRoute />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      )}
+      <ThemeContext.Provider value={{ setTheme, theme }}>
+        <ThemeProvider theme={themeStyle}>
+          <GlobalStyle />
+          <Corelayout>
+            <New_route />
+          </Corelayout>
+        </ThemeProvider>
+      </ThemeContext.Provider>
     </>
   );
 }
