@@ -18,9 +18,15 @@ export const setListFailToState = () => ({
   type: LIST_FAIL,
 });
 
-export const getDataList = () => {
+export const getDataList = (current) => {
+  // console.log("current :>> ", current);
   return async (dispatch) => {
-    const result = await axios.get("https://www.melivecode.com/api/users");
+    // const result = await axios.get("https://www.melivecode.com/api/users");
+    const result = await axios.get(
+      `      https://www.melivecode.com/api/users?page=${current}&per_page=5  
+      `
+    );
+
     try {
       dispatch(setListSuccessToState(result.data));
     } catch (error) {

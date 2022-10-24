@@ -6,7 +6,7 @@ import List_human from "../pages/list_form_human/list_human";
 const New_route = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      {/* <Route path="/login" element={<Login />} /> */}
       <Route path="/listhuman" element={<List_human />} />
     </Routes>
   );

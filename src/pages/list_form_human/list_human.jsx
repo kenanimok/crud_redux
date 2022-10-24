@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Corelayout from "../../components/layout/corelayout/corelayout";
 import styled from "styled-components";
-import { Space, Table, Tag, Dropdown, Menu, Button } from "antd";
+import { Space, Table, Tag, Dropdown, Menu, Button, Pagination } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import * as listAction from "../../action/listhuman.action";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,12 +12,20 @@ import Side_nav from "../side_nav/side_nav";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
+  const [current, setCurrent] = useState(1);
+
+  console.log("humanlistReducer :>> ", humanlistReducer);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listAction.getDataList());
-  }, []);
+    dispatch(listAction.getDataList(current));
+  }, [current]);
+
+  const onChangePages = (perpage) => {
+    // console.log("setCurrent :>> ", perpage);
+    setCurrent(perpage);
+  };
 
   const columns = [
     {
@@ -116,7 +124,19 @@ export default function List_human() {
   return (
     <>
       <Bodycontainer>
-        <Table columns={columns} dataSource={humanlistReducer.result} />
+        <Table
+          columns={columns}
+          dataSource={humanlistReducer?.result?.data}
+          pagination={false}
+        />
+        <Pagination
+          current={current}
+          onChange={onChangePages}
+          total={humanlistReducer?.result?.total}
+          // pageSize={humanlistReducer?.result?.total_pages}
+          // pageSize={humanlistReducer?.result?.total_pages}
+          showSizeChanger={false}
+        />
       </Bodycontainer>
     </>
     // <TblStyle>
@@ -156,4 +176,5 @@ const BtnCustom = styled.div`
 
 const Bodycontainer = styled.div`
   padding: 30px;
+  /* height: 100vh; */
 `;
