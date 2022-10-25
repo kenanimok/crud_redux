@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Corelayout from "../../components/layout/corelayout/corelayout";
 import styled from "styled-components";
 import { Space, Table, Tag, Dropdown, Menu, Button, Pagination } from "antd";
@@ -8,11 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Side_nav from "../side_nav/side_nav";
+import { ThemeContext } from "../../App";
 // import { Dropdown, Menu, Space } from "antd";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
   const [current, setCurrent] = useState(1);
+  const { setTheme, theme } = useContext(ThemeContext);
 
   console.log("humanlistReducer :>> ", humanlistReducer);
   const navigate = useNavigate();
@@ -43,7 +45,7 @@ export default function List_human() {
       title: "fname",
       dataIndex: "fname",
       key: "fname",
-      render: (text) => <a>{text}</a>,
+      render: (text) => <p>{text}</p>,
     },
     {
       title: "lname",
@@ -77,15 +79,15 @@ export default function List_human() {
                 },
                 {
                   key: "2",
-                  label: <p onClick={() => deleteHuman(record)}>deletee</p>,
+                  label: <p onClick={() => deleteHuman(record)}>delete</p>,
                 },
               ]}
             />
           )}
         >
-          <a onClick={(e) => e.preventDefault()}>
+          <p onClick={(e) => e.preventDefault()}>
             <DownOutlined />
-          </a>
+          </p>
         </Dropdown>
       ),
     },
@@ -124,57 +126,60 @@ export default function List_human() {
   return (
     <>
       <Bodycontainer>
-        <Table
-          columns={columns}
-          dataSource={humanlistReducer?.result?.data}
-          pagination={false}
-        />
-        <Pagination
-          current={current}
-          onChange={onChangePages}
-          total={humanlistReducer?.result?.total}
-          // pageSize={humanlistReducer?.result?.total_pages}
-          // pageSize={humanlistReducer?.result?.total_pages}
-          showSizeChanger={false}
-        />
+        <Tblcustom>
+          <Table
+            columns={columns}
+            dataSource={humanlistReducer?.result?.data}
+            pagination={false}
+          />
+        </Tblcustom>
+
+        <PaginationCs>
+          <Pagination
+            style={{ padding: "10px" }}
+            current={current}
+            onChange={onChangePages}
+            total={humanlistReducer?.result?.total}
+            showSizeChanger={false}
+          />
+        </PaginationCs>
       </Bodycontainer>
     </>
-    // <TblStyle>
-    //   <BtnCustom>
-    //     <Button>
-    //       <Link to="/create">add human</Link>
-    //     </Button>
-    //   </BtnCustom>
-
-    //   <Table columns={columns} dataSource={humanlistReducer.result} />
-    // </TblStyle>
   );
 }
-
-const Container = styled.div`
-  margin: 10px;
-  background-color: white;
-  height: 95%;
-`;
-
-const TblStyle = styled.div`
-  padding: 20px;
-  margin: 20px;
-`;
-const BtnCustom = styled.div`
-  display: flex;
-  justify-content: end;
-  margin-bottom: 10px;
-  .ant-btn {
-    color: white;
-    background: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
-    height: 50px;
-    border-radius: 12px;
-    font-weight: 300px;
-  }
-`;
 
 const Bodycontainer = styled.div`
   padding: 30px;
   /* height: 100vh; */
+`;
+
+const Tblcustom = styled.div`
+  .ant-table {
+    /* background: rgb(61 61 61 / 85%); */
+    background: ${({ theme }) => theme.bgtb};
+    color: ${({ theme }) => theme.text};
+    :hover:none {
+    }
+  }
+
+  .ant-table-thead > tr > th {
+    background: ${({ theme }) => theme.bg};
+    color: ${({ theme }) => theme.text};
+  }
+`;
+
+const PaginationCs = styled.div`
+  .ant-pagination-item-link {
+    background: ${({ theme }) => theme.bg};
+    color: ${({ theme }) => theme.text};
+  }
+  .ant-pagination-item a {
+    background: ${({ theme }) => theme.bg};
+    color: ${({ theme }) => theme.text};
+  }
+
+  .ant-pagination-item-active {
+    background: ${({ theme }) => theme.bg};
+    color: ${({ theme }) => theme.text};
+  }
 `;

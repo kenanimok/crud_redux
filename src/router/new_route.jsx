@@ -7,7 +7,7 @@ const New_route = () => {
   return (
     <Routes>
       {/* <Route path="/login" element={<Login />} /> */}
-      <Route path="/listhuman" element={<List_human />} />
+      <Route path="/" element={<List_human />} />
     </Routes>
   );
 };
