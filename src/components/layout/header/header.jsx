@@ -28,7 +28,7 @@ const Header_bar = () => {
       className="site-layout-background"
       style={{
         padding: 0,
-        backgroundColor: "white",
+        backgroundColor: "#f0f2f5",
       }}
     >
       {/* <Button onClick={logout}>logou</Button> */}

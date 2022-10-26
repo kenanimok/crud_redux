@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Corelayout from "../../components/layout/corelayout/corelayout";
 import styled from "styled-components";
 import { Space, Table, Tag, Dropdown, Menu, Button } from "antd";
@@ -8,17 +8,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Side_nav from "../side_nav/side_nav";
-// import { Dropdown, Menu, Space } from "antd";
+import ReactToPrint, { useReactToPrint } from "react-to-print";
+import { DownloadExcel } from "react-excel-export";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
-  // console.log("rererererducerdata", humanlistReducer);
+  console.log("rererererducerdata", humanlistReducer);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listAction.getDataList());
-  }, [humanlistReducer]);
+  }, []);
+
+  const componentRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   const columns = [
     {
@@ -117,24 +124,32 @@ export default function List_human() {
   return (
     <Corelayout>
       <Container>
-        <TblStyle>
-          <BtnCustom>
-            <Button>
-              <Link to="/create">add human</Link>
-            </Button>
-          </BtnCustom>
+        <BtnCustom>
+          <Button>
+            <Link to="/create">add human</Link>
+          </Button>
+          <Button onClick={handlePrint}>export pdf</Button>
 
-          <Table columns={columns} dataSource={humanlistReducer.result} />
-        </TblStyle>
+          <DownloadExcel
+            fileName="top-90-books"
+            data={humanlistReducer.result}
+            buttonLabel="Export excel"
+          />
+        </BtnCustom>
+        <Contents ref={componentRef}>
+          <TblStyle>
+            <Table columns={columns} dataSource={humanlistReducer.result} />
+          </TblStyle>
+        </Contents>
       </Container>
     </Corelayout>
   );
 }
 
-const Container = styled.div`
-  margin: 10px;
+const Container = styled.span`
+  /* margin: 10px; */
   background-color: white;
-  height: 95%;
+  /* height: 95%; */
 `;
 
 const TblStyle = styled.div`
@@ -143,8 +158,9 @@ const TblStyle = styled.div`
 `;
 const BtnCustom = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: end;
-  margin-bottom: 10px;
+  margin: 10px;
   .ant-btn {
     color: white;
     background: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
@@ -152,4 +168,10 @@ const BtnCustom = styled.div`
     border-radius: 12px;
     font-weight: 300px;
   }
+`;
+const Contents = styled.div`
+  margin: 10px;
+  padding-bottom: 20px;
+  background-color: white;
+  /* height: 95%; */
 `;

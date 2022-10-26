@@ -28,6 +28,11 @@ const items = [
     <PieChartOutlined />
   ),
   getItem("flag", <Link to="/flag">Flag</Link>, <PieChartOutlined />),
+  getItem(
+    "summaryuser",
+    <Link to="/summaryuser">summaryuser</Link>,
+    <PieChartOutlined />
+  ),
 ];
 
 const Sider_bar = (props) => {
