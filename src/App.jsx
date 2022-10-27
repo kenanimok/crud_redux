@@ -46,7 +46,7 @@ function App() {
         <Route path="/create" element={<CreateHuman />} />
         <Route path="/edit/:id" element={<Edit_human />} />
         <Route path="/flag" element={<Flag_ />} />
-        <Route path="/summaryuser" element={<Summary_user />} />
+        {/* <Route path="/summaryuser" element={<Summary_user />} /> */}
         <Route path="/nav" element={<Side_nav />} />
       </Route>
     </Routes>
