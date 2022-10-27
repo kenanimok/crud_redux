@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
-
 const LOGIN_FETCHING = "LOGIN_FETCHING";
 const LOGIN_FAILED = "LOGIN_FAILED";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";

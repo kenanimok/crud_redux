@@ -1,6 +1,5 @@
 // import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import {
   Body,
   ButtonResgis,
@@ -9,8 +8,6 @@ import {
   Label,
 } from "./login.style";
 import { useState } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
 import * as loginActions from "../../action/login.action";
 import { useDispatch } from "react-redux";
 

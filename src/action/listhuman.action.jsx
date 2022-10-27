@@ -1,6 +1,4 @@
-import React from "react";
 import axios from "axios";
-import { Card } from "antd";
 
 const LIST_FETCHING = "LIST_FETCHING";
 const LIST_SUCCESS = "LIST_SUCCESS";
@@ -28,11 +26,3 @@ export const getDataList = () => {
     }
   };
 };
-
-// export const deleteData = (data) => {
-//   console.log("delte_para", data);
-//   return async (dispatch) => {
-//     await axios.delete("https://www.melivecode.com/api/users/delete", data);
-//     // await getDataList(dispatch);
-//   };
-// };

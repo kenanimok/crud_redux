@@ -7,7 +7,6 @@ import {
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu } from "antd";
 import React, { useState } from "react";
-import Header_bar from "../header/header";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 

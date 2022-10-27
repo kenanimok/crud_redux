@@ -120,8 +120,6 @@ const CreateHuman = () => {
             <Btnsub type="submit">Submit</Btnsub>
           </Formcon>
         </LayoutForm>
-
-        {/* </Formcon> */}
       </Container>
     </Corelayout>
   );
@@ -131,7 +129,6 @@ export default CreateHuman;
 
 const Container = styled.div`
   margin: 10px;
-  /* background-color: #003566; */
   background-color: white;
   height: 95%;
   /* border-radius: 20px; */
@@ -172,7 +169,6 @@ const Continput = styled.div`
 const LabelCustom = styled.label`
   display: flex;
   align-items: center;
-  /* padding-right: 10px; */
 `;
 
 const Btnsub = styled.button`

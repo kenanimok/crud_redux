@@ -58,8 +58,6 @@ const Summary_user = () => {
             <ContainerCardReport></ContainerCardReport>
 
             <ContainerCardReport className="larg"></ContainerCardReport>
-
-            {/* <ContainerCardReport></ContainerCardReport> */}
           </Boxcard>
         </Containers>
       </Corelayout>

@@ -6,14 +6,11 @@ import { DownOutlined } from "@ant-design/icons";
 import * as listAction from "../../action/listhuman.action";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import Side_nav from "../side_nav/side_nav";
-import ReactToPrint, { useReactToPrint } from "react-to-print";
 import { DownloadExcel } from "react-excel-export";
+import { useReactToPrint } from "react-to-print";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
-  console.log("rererererducerdata", humanlistReducer);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
