@@ -8,21 +8,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { DownloadExcel } from "react-excel-export";
 import { useReactToPrint } from "react-to-print";
+import { renderToString } from "react-dom/server";
+import jsPDF from "jspdf";
+import Report from "../../components/Report/report";
+import font from "../../assets/fonts/font_report/RSU_Regular.ttf";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
   const navigate = useNavigate();
-
+  const ref = useRef();
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(listAction.getDataList());
   }, []);
-
-  const componentRef = useRef();
-
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
 
   const columns = [
     {
@@ -118,6 +117,16 @@ export default function List_human() {
     Fetch();
   };
 
+  const onDownload = async () => {
+    const string = renderToString(<Report ref={ref} />);
+    let pdf = new jsPDF("l", "pt", "a4");
+    await pdf.addFont(font, "Prompt", "normal");
+    await pdf.setFont("Prompt");
+    await pdf.setFontSize(5);
+    await pdf.html(string);
+    await pdf.save("test.pdf");
+  };
+
   return (
     <Corelayout>
       <Container>
@@ -125,28 +134,32 @@ export default function List_human() {
           <Button>
             <Link to="/create">add human</Link>
           </Button>
-          <Button onClick={handlePrint}>export pdf</Button>
 
-          <DownloadExcel
-            fileName="top-90-books"
-            data={humanlistReducer.result}
-            buttonLabel="Export excel"
-          />
+          <Button onClick={onDownload}>Print pdf</Button>
         </BtnCustom>
-        <Contents ref={componentRef}>
+        <Contents>
           <TblStyle>
             <Table columns={columns} dataSource={humanlistReducer.result} />
           </TblStyle>
         </Contents>
+
+        <div
+          style={{
+            position: "fixed",
+            top: "-100%",
+            zIndex: "-10",
+            marginLeft: -9999,
+          }}
+        >
+          <Report reportRef={ref} />
+        </div>
       </Container>
     </Corelayout>
   );
 }
 
 const Container = styled.span`
-  /* margin: 10px; */
   background-color: white;
-  /* height: 95%; */
 `;
 
 const TblStyle = styled.div`

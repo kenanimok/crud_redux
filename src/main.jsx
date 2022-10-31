@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import { rootReducer } from "./reducer";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import "./App.css";
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
