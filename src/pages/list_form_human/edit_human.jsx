@@ -9,7 +9,6 @@ import { useFormik } from "formik";
 import styled from "styled-components";
 const Edit_human = () => {
   const HumanEditReducer = useSelector((state) => state.edithumanReducer);
-  console.log("HumanEditReducer :>> ", HumanEditReducer.result);
   const dispatch = useDispatch();
   const match = useMatch("/edit/:id");
   useEffect(() => {
@@ -30,19 +29,14 @@ const Edit_human = () => {
       ? HumanEditReducer.result.user
       : initialValues,
     onSubmit: (values) => {
-      // console.log("values", values);
       dispatch(HumanEditActions.updateProduct(values));
     },
   });
-
-  // console.log("formik", formik.initialValues);
 
   return (
     <Corelayout>
       <Container>
         <LayoutForm>
-          {/* <img src={HumanEditReducer.result.avatar} alt="xx" /> */}
-          {/* <p style={{ color: "red" }}>{HumanEditReducer.result.status}</p> */}
           <Formcon onSubmit={formik.handleSubmit}>
             <Continput>
               <LabelCustom htmlFor="fname">Link Avartar</LabelCustom>
@@ -122,10 +116,8 @@ export default Edit_human;
 
 const Container = styled.div`
   margin: 10px;
-  /* background-color: #003566; */
   background-color: white;
   height: 95%;
-  /* border-radius: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -163,7 +155,6 @@ const Continput = styled.div`
 const LabelCustom = styled.label`
   display: flex;
   align-items: center;
-  /* padding-right: 10px; */
 `;
 
 const Btnsub = styled.button`

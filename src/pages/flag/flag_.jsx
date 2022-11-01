@@ -7,10 +7,7 @@ import styled from "styled-components";
 import { Select } from "antd";
 
 const Flag_ = () => {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  //   console.log("item,itemitemitem", items);
   const [q, setQ] = useState("");
   const [searchParam] = useState(["capital", "name", "numericCode"]);
   const [filterParam, setFilterParam] = useState(["All"]);
@@ -93,11 +90,8 @@ const Flag_ = () => {
 
 export default Flag_;
 const Boxcard = styled.div`
-  /* margin-top: 10px; */
   background-color: #f0f2f5;
-
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(200px, 7fr)); */
   grid-template-columns: repeat(7, 1fr);
   width: 100%;
   height: 100%;
@@ -119,20 +113,16 @@ const Boxcard = styled.div`
 
 export const Container = styled.div`
   display: grid;
-  /* gap: ${(props) => (props.gap ? `${props.gap}` : "20px")}; */
 `;
 
 export const Titlecard = styled.div`
   width: ${(props) => (props.width ? props.width : "100%")};
   height: ${(props) => (props.height ? props.height : "100%")};
-  /* background: ${(props) =>
-    props.background ? props.background : `#001529`}; */
   background: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
   box-shadow: ${(props) =>
     props.isPdfReport ? "0px" : "0px 1px 16px #eaeaea"};
   border: ${(props) => (props.isPdfReport ? "1px solid #eaeaea" : "0px")};
   border-radius: 26px;
-  /* color: ${(props) => (props.color ? props.color : `white`)}; */
   color: #ffffff;
   padding: ${(props) => (props.padding ? props.padding : "20px")};
 

@@ -18,7 +18,7 @@ export const setStockFailedToState = () => ({
 });
 
 export const updateProduct = (formData) => {
-  console.log("formData____updateAction :>> ", formData);
+  // console.log("formData____updateAction :>> ", formData);
   return async (dispatch) => {
     await axios.put("https://www.melivecode.com/api/users/update", formData);
     history.back();

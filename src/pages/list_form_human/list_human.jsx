@@ -1,24 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Corelayout from "../../components/layout/corelayout/corelayout";
 import styled from "styled-components";
-import { Space, Table, Tag, Dropdown, Menu, Button } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import {
+  Table,
+  Tag,
+  Dropdown,
+  Menu,
+  Button,
+  AutoComplete,
+  Input,
+  Space,
+} from "antd";
+import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import * as listAction from "../../action/listhuman.action";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import Side_nav from "../side_nav/side_nav";
-// import { Dropdown, Menu, Space } from "antd";
 
 export default function List_human() {
   const humanlistReducer = useSelector((state) => state.listhumanReducer);
-  // console.log("rererererducerdata", humanlistReducer);
+  const [keyword, setKeyword] = useState();
+  const { Search } = Input;
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listAction.getDataList());
-  }, [humanlistReducer]);
+    dispatch(listAction.SearchData(keyword));
+  }, [keyword]);
 
   const columns = [
     {
@@ -113,11 +121,24 @@ export default function List_human() {
 
     Fetch();
   };
+  const onSearch = (value) => {
+    setKeyword(value);
+  };
 
   return (
     <Corelayout>
       <Container>
         <TblStyle>
+          <Containersearch>
+            <Search
+              placeholder="input search text"
+              onSearch={onSearch}
+              style={{
+                width: 200,
+              }}
+            />
+          </Containersearch>
+
           <BtnCustom>
             <Button>
               <Link to="/create">add human</Link>
@@ -152,4 +173,8 @@ const BtnCustom = styled.div`
     border-radius: 12px;
     font-weight: 300px;
   }
+`;
+const Containersearch = styled.div`
+  position: relative;
+  top: 30px;
 `;

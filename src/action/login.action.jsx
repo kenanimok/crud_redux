@@ -24,11 +24,8 @@ export const setLogoutToState = () => ({
 });
 
 export const loign = (user, navigate) => {
-  console.log("use", user);
-
   return (dispatch) => {
     axios.post("https://www.melivecode.com/api/login", user).then((res) => {
-      // console.log("rerserse", res.data.accessToken);
       dispatch(setLoginSuccessToState(res.data));
       if (res.data.status === "ok") {
         localStorage.setItem("token", res.data.accessToken);

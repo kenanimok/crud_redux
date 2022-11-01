@@ -15,14 +15,6 @@ import * as loginActions from "../../../action/login.action";
 const { Header, Content, Footer, Sider } = Layout;
 
 const Header_bar = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  // const humanlistReducer = useSelector((state) => state.listhumanReducer);
-  // console.log("humanlistReducer :>> ", humanlistReducer);
-
-  // useEffect(() => {}, []);
-
   return (
     <Header
       className="site-layout-background"
@@ -30,10 +22,7 @@ const Header_bar = () => {
         padding: 0,
         backgroundColor: "white",
       }}
-    >
-      {/* <Button onClick={logout}>logou</Button> */}
-      {/* <Button onClick={dispatch(loginActions.logout(navigate))}>logout</Button> */}
-    </Header>
+    ></Header>
   );
 };
 

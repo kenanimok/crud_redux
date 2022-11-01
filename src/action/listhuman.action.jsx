@@ -29,10 +29,17 @@ export const getDataList = () => {
   };
 };
 
-// export const deleteData = (data) => {
-//   console.log("delte_para", data);
-//   return async (dispatch) => {
-//     await axios.delete("https://www.melivecode.com/api/users/delete", data);
-//     // await getDataList(dispatch);
-//   };
-// };
+export const SearchData = (keyword) => {
+  console.log("SearchData :>> ", keyword);
+  return async (dispatch) => {
+    if (keyword !== null || keyword !== undefined) {
+      const result = await axios.get(
+        `https://www.melivecode.com/api/users?search=${keyword}`
+      );
+      // console.log("result :>> ", result);
+      dispatch(setListSuccessToState(result.data));
+    } else {
+      getDataList(dispatch);
+    }
+  };
+};

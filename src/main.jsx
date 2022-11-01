@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import thunk from "redux-thunk";
 import { Provider, useDispatch } from "react-redux";
-// import { Provider, useDispatch } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import { rootReducer } from "./reducer";

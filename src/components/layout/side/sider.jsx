@@ -1,17 +1,10 @@
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu } from "antd";
+import { PieChartOutlined } from "@ant-design/icons";
+import { Layout, Menu } from "antd";
 import React, { useState } from "react";
-import Header_bar from "../header/header";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Sider } = Layout;
 
 function getItem(key, label, icon) {
   return {
@@ -63,9 +56,7 @@ const MenuCustom = styled.div`
   }
   .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
     .ant-menu-item-selected {
-    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.2);
-    /* border-radius: 16px; */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
