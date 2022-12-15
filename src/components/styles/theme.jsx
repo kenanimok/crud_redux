@@ -3,6 +3,8 @@ export const lightTheme = {
   bgAlpha: "rgba(250,250,250,.3)",
   bg2: "rgb(245,245,245)",
   bg3: "rgb(230,230,230)",
+  // bg3: "#140f0f",
+
   text: "rgb(45,45,45)",
   primary: "rgb(52, 131, 235)",
   bgtb: "#ffffff",

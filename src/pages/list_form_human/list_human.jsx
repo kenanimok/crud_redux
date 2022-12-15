@@ -7,7 +7,6 @@ import * as listAction from "../../action/listhuman.action";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Side_nav from "../side_nav/side_nav";
 import { ThemeContext } from "../../App";
 // import { Dropdown, Menu, Space } from "antd";
 
