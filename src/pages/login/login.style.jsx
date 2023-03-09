@@ -73,7 +73,7 @@ export const Container = styled.div`
     }
   }
 `;
-export const InputCustom = styled.input`
+export const InputCustom = styled.div`
   display: block;
   margin: 20px auto;
   width: 60%;

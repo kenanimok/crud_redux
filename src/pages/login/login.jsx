@@ -59,8 +59,10 @@ const Login = () => {
             <InputCustom
               type="submit"
               style={{ background: " #3a50e0", color: "white", border: "none" }}
-            ></InputCustom>
-            {/* <ButtonResgis>kkk</ButtonResgis> */}
+              onClick={()=>navigate("/listhuman")}
+            >
+              
+            </InputCustom>
           </form>
         </div>
       </Container>
